@@ -39,6 +39,8 @@ namespace TheWorldEngine
             Window *getWindow(uint64_t wid) const;
             bool deleteWindow(uint64_t wid);
 
+            uint64_t openNumber();
+
             GLenum activateWindow(uint64_t wid);
 
             void pollEvents();

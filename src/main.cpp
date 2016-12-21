@@ -5,24 +5,23 @@
 #include <SFML/Graphics.hpp>
 
 #include "Systems/WindowController.hpp"
+#include "Systems/ResourceSystem.hpp"
 
 void handle(sf::Event event, sf::Window &window);
 
 int main(int argc, char* argv[])
 {
     TheWorldEngine::WindowController::WindowController window_controller("WindowController");
+    TheWorldEngine::Systems::ResourceSystem resource_manager("ResourceManager");
 
-    uint64_t wid = window_controller.createWindow({800, 600}, "Title", sf::Style::Default);
-    sf::RenderWindow &window = window_controller.getWindow(wid)->getWindowReference();
+    uint64_t shader1 = resource_manager.loadResourceFromFile("res/shader1", TheWorldEngine::Systems::ResourceType::SHADER);
 
-    window_controller.activateWindow(wid);
+    uint64_t window1 = window_controller.createWindow({800, 600}, "Window1", sf::Style::Default);
 
-    sf::Shader shader;
+    sf::RenderWindow &window = window_controller.getWindow(window1)->getWindowReference();
+    sf::Shader *shader = (sf::Shader *) resource_manager.getResource(shader1)->getResource();
 
-    if (!shader.loadFromFile("res/vertex.vert", "res/fragment.frag"))
-    {
-        std::cerr << "FAILED LOADING SHADERS!!";
-    }
+    window_controller.activateWindow(window1);
 
     float points[] = {
             0.0f,  0.5f,  0.0f,
@@ -44,14 +43,14 @@ int main(int argc, char* argv[])
 
     // wipe the drawing surface clear
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    sf::Shader::bind(&shader);
+    sf::Shader::bind(shader);
     glBindVertexArray(vao);
     // draw points 0-3 from the currently bound VAO with current in-use shader
     glDrawArrays(GL_TRIANGLES, 0, 3);
 
     window.display();
 
-    while (window.isOpen())
+    while (window_controller.openNumber())
         window_controller.pollEvents(); // Events must be handled at same thread that created window
 
     return 0;

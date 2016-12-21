@@ -15,6 +15,7 @@ namespace TheWorldEngine
         namespace ResourceFunctions
         {
             const std::string name("ResourceFunctions");
+            void *loadShader(std::string &filename);
             void *loadTexture(std::string &filename);
             void *loadMesh(std::string &filename);
             void *loadDrawable(std::string &filename);
@@ -24,6 +25,7 @@ namespace TheWorldEngine
 
         enum ResourceType
         {
+            SHADER,
             TEXTURE,
             MESH,
             DRAWABLE,

@@ -51,6 +51,17 @@ bool TheWorldEngine::WindowController::WindowController::deleteWindow(uint64_t w
     return windows.erase(wid) != 0;
 }
 
+uint64_t TheWorldEngine::WindowController::WindowController::openNumber()
+{
+    uint64_t open_windows = 0;
+    for (auto window : windows)
+    {
+        if (window.second->getWindowReference().isOpen())
+            open_windows++;
+    }
+    return open_windows;
+}
+
 GLenum TheWorldEngine::WindowController::WindowController::activateWindow(uint64_t wid)
 {
     Window *wnd;
