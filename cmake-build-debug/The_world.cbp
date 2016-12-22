@@ -24,8 +24,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/SFML-2.4.1-x86/include"/>
-					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/glew-cmake/include"/>
+					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/SFML/include"/>
+					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/glew/include"/>
+					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/glm"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../include"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include-fixed"/>
@@ -48,8 +49,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/SFML-2.4.1-x86/include"/>
-					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/glew-cmake/include"/>
+					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/SFML/include"/>
+					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/glew/include"/>
+					<Add directory="C:/Users/seijihariki/ClionProjects/The world/libs/glm"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../include"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/5.3.0/include-fixed"/>
@@ -110,6 +112,9 @@
 		<Unit filename="C:/Users/seijihariki/ClionProjects/The world/src/Base/System.hpp">
 			<Option target="The_world"/>
 		</Unit>
+		<Unit filename="C:/Users/seijihariki/ClionProjects/The world/src/Base/Types.cpp">
+			<Option target="The_world"/>
+		</Unit>
 		<Unit filename="C:/Users/seijihariki/ClionProjects/The world/src/Base/Types.hpp">
 			<Option target="The_world"/>
 		</Unit>
@@ -146,7 +151,7 @@
 		<Unit filename="C:/Users/seijihariki/ClionProjects/The world/Modules/FindSFML.cmake">
 			<Option virtualFolder="CMake Files\Modules\"/>
 		</Unit>
-		<Unit filename="C:/Users/seijihariki/ClionProjects/The world/Modules/FindGLEW.cmake">
+		<Unit filename="C:/Users/seijihariki/ClionProjects/The world/Modules/FindGLM.cmake">
 			<Option virtualFolder="CMake Files\Modules\"/>
 		</Unit>
 	</Project>

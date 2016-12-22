@@ -55,14 +55,8 @@
 #   add_executable(myapp ...)
 #   target_link_libraries(myapp ${SFML_LIBRARIES})
 
-if(COMPILE_ARCH STREQUAL "x86")
-    set(SFML_ROOT "${CMAKE_SOURCE_DIR}/libs/SFML-2.4.1-x86")
-else()
-    set(SFML_ROOT "${CMAKE_SOURCE_DIR}/libs/SFML-2.4.1-x64")
-endif()
-
 # define the SFML_STATIC macro if static build was chosen
-if(STATIC_LIBS)
+if(SFML_STATIC_LIBRARIES)
     add_definitions(-DSFML_STATIC)
 endif()
 

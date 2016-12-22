@@ -42,7 +42,7 @@ set(SOURCE_FILES
         src/Systems/GraphicsSystem.cpp
         src/Systems/GraphicsSystem.hpp
         src/Systems/ResourceSystem.cpp
-        src/Systems/ResourceSystem.hpp)
+        src/Systems/ResourceSystem.hpp src/Base/Types.cpp)
 
 # Set C++11
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -71,6 +71,7 @@ if(OPENGL_FOUND)
 endif()
 
 # Load SFML
+set(SFML_ROOT "${CMAKE_SOURCE_DIR}/libs/SFML")
 find_package(SFML REQUIRED system window graphics network audio)
 if(SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
@@ -82,13 +83,25 @@ if(SFML_FOUND)
 endif()
 
 # Load Glew
-set(GLEW_LOCATION "${CMAKE_SOURCE_DIR}/libs/glew-cmake")
-find_package(GLEW REQUIRED)
+set(GLEW_ROOT "${CMAKE_SOURCE_DIR}/libs/glew")
+set(GLEW_FOUND true)
 if (GLEW_FOUND)
+    set(GLEW_INCLUDE_DIR "${GLEW_ROOT}/include")
+    set(GLEW_LIBRARIES "${GLEW_ROOT}/lib/libglew32.a;${GLEW_ROOT}/lib/libglew32.dll.a")
+
     include_directories(${GLEW_INCLUDE_DIR})
     message(STATUS "GLEW_INCLUDE_DIR:")
     message(STATUS "${GLEW_INCLUDE_DIR}\n")
     target_link_libraries(${EXECUTABLE_NAME} ${GLEW_LIBRARIES})
     message(STATUS "GLEW_LIBRARIES:")
     message(STATUS "${GLEW_LIBRARIES}\n")
+endif()
+
+# Load GLM
+set(GLM_ROOT_DIR "${CMAKE_SOURCE_DIR}/libs/glm")
+find_package(GLM REQUIRED)
+if (GLM_FOUND)
+    include_directories(${GLM_INCLUDE_DIR})
+    message(STATUS "GLM_INCLUDE_DIR:")
+    message(STATUS "${GLM_INCLUDE_DIR}\n")
 endif()
