@@ -1,0 +1,3 @@
+cd glew
+cmake .
+make
